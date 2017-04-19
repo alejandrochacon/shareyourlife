@@ -9,19 +9,31 @@ body {
 }
 #navbar{
   margin: 0 auto;
+
 }
 ul {
   width: 100%;
-  margin: 0 auto;
 }
 .listLink{
   display: block;
   margin: 6px 0;
   border: solid 2px black;
-  background-color: #ededed;
   text-align: center;
   border-radius: 20px;
-
+  background-color: #DADAAA;
+  color: black;
+}
+#suchleiste{
+  background-color: #DADAAA;
+  border-radius: 500px;
+  width: 200px;
+  margin-top: 16px;
+  border-color: black;
+}
+#suchleiste:focus{
+  width: 450px;
+  outline: none;
+  box-shadow: 0 0 2pt 1pt #FF9999;
 }
 #search{
   float: left;
@@ -36,9 +48,26 @@ li{
 .button {
   float: left;
   width: 33%;
-  margin: 1px;
-  
-
+  margin: 0 1px;
+}
+#uploadButton{
+  border-radius: 500px;
+  float: right;
+  margin-top: 16px;
+  height: 25px;
+  width: 250px;
+  background-color: #DADAAA;
+  font-style: oblique;
+  color: #002200;
+  border-color: #000079;
+  font-size: 18px;
+  font: helvetica;
+}
+#uploadButton:focus{
+  outline: none;
+}
+#uploadButton:active{
+  box-shadow: 0 0 2pt 1pt lightblue;
 }
 #register{
   max-height: 5px;
@@ -59,9 +88,7 @@ li{
 
 
 }
-#topbar{
-  float: left;
-}
+
 
 a {
   text-decoration: none;
@@ -69,6 +96,5 @@ a {
 
 
 .navbarhead{
-  background-color: transparent;
-margin: 0 auto;
+    margin: 0 auto;
 }

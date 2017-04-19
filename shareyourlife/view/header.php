@@ -28,7 +28,7 @@
             <div id="register">
                 <ul id="registerbutton">
                     <li class="suche">
-                    <li id="search" ><input type: "text" placeholder:"Search"></li>
+                    <li id="search" ><input id="suchleiste" type: "text" placeholder:"Search" onchange=""> <button id="uploadButton" onclick="">Upload</button></li>
                         <li class="loginbutton"> <a class="listLink" href="/">Login</a>
                         <a class="listLink" href="/">Register</a></li>
                     </li>
@@ -38,8 +38,8 @@
             <div id="topbar">
               <ul>
                 <li class="button"><a class="listLink" href="/">Home</a></li>
-                <li class="button"><a class="listLink" href="/user">Benutzer</a></li>
-                <li class="button"><a class="listLink" href="/user/create">Benutzer erstellen</a></li>
+                <li class="button"><a class="listLink" href="/user">Bildergalerie</a></li>
+                <li class="button"><a class="listLink" href="/user/create">Benutzer</a></li>
               </ul>
 
         </div><!--/.nav-collapse -->
