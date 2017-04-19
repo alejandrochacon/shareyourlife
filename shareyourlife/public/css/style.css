@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
   max-width: 800px;
   margin: 0 auto;
@@ -16,7 +20,7 @@ ul {
 }
 .listLink{
   display: block;
-  margin: 6px 0;
+  margin: 10px 0;
   border: solid 2px black;
   text-align: center;
   border-radius: 20px;
