@@ -68,10 +68,11 @@ require_once 'ConnectionHandler.php';
  * Sollten bei der Interaktion mit der Datenbank Fehler auftreten, macht es
  * sinn, Exceptions zu werfen.
  *
- *   $statement = ...
- *   if (!$statement->execute()) {
- *     throw new Exception("Ein Fehler ist aufgetreten: $result->error");
- *   }
+ *$statement = ...
+ *if (!$statement->execute()) {
+ *throw new Exception("Ein Fehler ist aufgetreten: $result->error");
+ *};
+
  */
 class Repository
 {
