@@ -32,8 +32,8 @@
                     <input id="suchleiste" type="text" placeholder="Search" onchange=""> 
                     <input type="button" id="uploadButton" onclick="" value="Upload"></li>
                     </form>
-                        <li class="loginbutton"> <a class="listLink" href="/">Login</a>
-                        <a class="listLink" href="/">Register</a></li>
+                        <li class="loginbutton"> <a class="listLink" href="/user/login">Login</a>
+                        <a class="listLink" href="/user/create">Register</a></li>
                     </li>
 
                 </ul>
