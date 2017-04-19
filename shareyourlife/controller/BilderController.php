@@ -20,10 +20,13 @@ class BilderController
 
     public function upload()
     {
-        if (!is_null($_FILES['userfile']['tmp_name']))
-    {
-        echo "<input type='image' src='../public/images/upload/$_FILES['userfile']['tmp_name']''>";
-    }
+     //   if (!is_null($_FILES['userfile']['tmp_name']))
+    
+        $ziel= "../public/images/upload";
+        $name = $_FILES['userfile']['name'];
+        move_uploaded_file($_FILES['userfile']['tmp_name'],"$ziel/$name");
+        echo "<input type='image' src='/images/upload/$name'/>";
+    
         //$view = new View('user_create');
         //$view->title = 'Benutzer erstellen';
         //$view->heading = 'Benutzer erstellen';

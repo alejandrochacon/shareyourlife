@@ -30,7 +30,7 @@
                     <li class="suche">
                     <li id="search" >
                     <input id="suchleiste" type="text" placeholder="Search" onchange=""> 
-                    <input type="button" name="" id="uploadButton" onclick="" value="Upload"></li>
+                    <input type="button" id="uploadButton" onclick="" value="Upload"></li>
                     </form>
                         <li class="loginbutton"> <a class="listLink" href="/">Login</a>
                         <a class="listLink" href="/">Register</a></li>
