@@ -15,6 +15,7 @@ body {
   margin: 0 auto;
 
 }
+
 ul {
   width: 100%;
 }
@@ -37,13 +38,13 @@ ul {
   padding-left: 5px;
 }
 #suchleiste:focus{
-  width: 450px;
+  width: 400px;
   outline: none;
   box-shadow: 0 0 2pt 1pt #FF9999;
 }
 #search{
   float: left;
-  width: 90%;
+  
 }
 .suche{
   vertical-align: middle;
@@ -56,24 +57,26 @@ li{
   width: 33%;
   margin: 0 1px;
 }
-#uploadButton{
-  border-radius: 500px;
-  float: right;
-  margin-top: 16px;
-  height: 25px;
-  width: 250px;
-  background-color: transparent;
-  font-style: oblique;
-  color: #002200;
-  border-color: #000000;
-  font-size: 18px;
-  font: helvetica;
+.upload{
+margin-top: 10px;
+
 }
-#uploadButton:focus{
-  outline: none;
+#uploadButton{
+  margin-right: 4px;
+  font-size: 22px;
+  height: 25px;
+  margin-top: 5px;
+  width: 220px;
+  float: right;
+  display: block;
+  border: solid 2px black;
+  text-align: center;
+  border-radius: 20px;
+  background-color: transparent;
+  color: black;
 }
 #uploadButton:active{
-  box-shadow: 0 0 2pt 1pt lightblue;
+  outline: none;
 }
 #register{
   max-height: 5px;
@@ -88,7 +91,7 @@ li{
   width: 60px;
   display: block;
 
-  margin: 0 5px;
+  
 
   float: right;
 
