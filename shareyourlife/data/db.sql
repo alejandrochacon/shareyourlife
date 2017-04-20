@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS users;
 CREATE Table Users (
   id        INT NOT NULL AUTO_INCREMENT,
+  username Varchar(64) not null,
   firstName VARCHAR(64)  NOT NULL,
   lastName  VARCHAR(64)  NOT NULL,
   email     VARCHAR(128) NOT NULL,

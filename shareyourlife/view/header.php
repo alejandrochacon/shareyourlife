@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $title ?> | Bbc MVC</title>
+    <title><?= $title ?></title>
 
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet">
@@ -30,11 +30,27 @@
                     <li class="suche">
                     <li id="search" >
 
-                    <input id="suchleiste" type="text" placeholder="Search" onchange=""></li> 
-                    <li class="loginbutton"> <a class="listLink" href="/">Login</a>
+                    <input id="suchleiste" type="text" placeholder="Search" onchange=""/></li>
+                    <?php
+                    session_start();
+
+                    if(!isset($_SESSION['username'])){
+
+                    ?>
+                    <li class="loginbutton"> <a class="listLink" href="/user/login">Login</a>
                         <a class="listLink" href="/user/create">Register</a></li>
 
-                    </li>
+                    <?php
+                    }
+                    else{
+                        $username = $_SESSION['username'];
+                    ?>
+                    <li id="loggedname">eingeloggt als <?= Account::getUsername() ?></li>
+
+                   <li class="loginbutton"> <a class="listLink" href="/user/logout">Logout</a></li>
+                    <?php };?>
+
+
                     <li class="upload"><a href="/bilder/upload"  id="uploadButton">Upload</a></li>
                         
 
