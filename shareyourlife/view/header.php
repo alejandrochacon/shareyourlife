@@ -39,15 +39,17 @@
                     ?>
                     <li class="loginbutton"> <a class="listLink" href="/user/login">Login</a>
                         <a class="listLink" href="/user/create">Register</a></li>
-
-                    <?php
+                        <?php
                     }
                     else{
                         $username = $_SESSION['username'];
-                    ?>
-                    <li id="loggedname">eingeloggt als <?= Account::getUsername() ?></li>
+                        ?>
 
-                   <li class="loginbutton"> <a class="listLink" href="/user/logout">Logout</a></li>
+
+                   <li class="loginbutton" id="logoutbutton"> <a class="listLink" href="/user/logout">Logout</a></li>
+
+                        <li id="loggedname">eingeloggt als <?= Account::getUsername() ?></li>
+
                     <?php };?>
 
 

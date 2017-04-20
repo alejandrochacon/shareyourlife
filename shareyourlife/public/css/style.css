@@ -6,11 +6,24 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding-top: 50px;
-  
+  font-family: "Baskerville Old Face";
   background-size: 100%;
   background-repeat: no-repeat;
 
 }
+#content{
+  min-height: 500px;
+  border:solid 3px;
+  border-radius: 10%;
+  text-align: center;
+
+
+  font-size: 20px;
+}
+p{
+  opacity: 1.0;
+}
+
 #navbar{
   margin: 0 auto;
 
@@ -38,7 +51,7 @@ ul {
   padding-left: 5px;
 }
 #suchleiste:focus{
-  width: 400px;
+  width: 300px;
   outline: none;
   box-shadow: 0 0 2pt 1pt #FF9999;
 }
@@ -97,7 +110,16 @@ margin-top: 10px;
 
 
 }
+#logoutbutton{
+  font-size: 20px;
+  width: 80px;
+  margin-top: 5px;
+}
 #loggedname{
+  float: right;
+  margin-bottom:50px;
+  height: 1px;
+  margin-top: 15px;
 }
 
 
