@@ -32,8 +32,8 @@ class UserController
             $firstName = $_POST['firstName'];
             $lastName = $_POST['lastName'];
             $email = $_POST['email'];
-            // $password  = $_POST['password'];
-            $password = 'no_password';
+            $password = $_POST['password'];
+
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password);
@@ -52,8 +52,4 @@ class UserController
         header('Location: /user');
     }
 
-    public function login()
-    {
-
-    }
 }

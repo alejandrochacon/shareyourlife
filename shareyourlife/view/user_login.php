@@ -1,46 +1,34 @@
-<?php
-session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=php-einfach', 'root', '');
-
-if(isset($_GET['login'])) {
-    $email = $_POST['email'];
-    $passwort = $_POST['passwort'];
-
-    $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-    $result = $statement->execute(array('email' => $email));
-    $user = $statement->fetch();
-
-    //Überprüfung des Passworts
-    if ($user !== false && password_verify($passwort, $user['passwort'])) {
-        $_SESSION['userid'] = $user['id'];
-        die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
-    } else {
-        $errorMessage = "E-Mail oder Passwort war ungültig<br>";
-    }
-
-}
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-
-<?php
-if(isset($errorMessage)) {
-    echo $errorMessage;
-}
-?>
-
-<form action="?login=1" method="post">
-    E-Mail:<br>
-    <input type="email" size="40" maxlength="250" name="email"><br><br>
-
-    Dein Passwort:<br>
-    <input type="password" size="40"  maxlength="250" name="passwort"><br>
-
-    <input type="submit" value="Abschicken">
+<form class="form-horizontal" action="/user/login" method="post">
+    <div class="component" data-html="true">
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="firstName">Vorname</label>
+            <div class="col-md-4">
+                <input id="firstName" name="firstName" type="text" placeholder="Vorname" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="lastName">Nachname</label>
+            <div class="col-md-4">
+                <input id="lastName" name="lastName" type="text" placeholder="Nachname" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="email">Mail</label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="email" placeholder="Mail" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="password">Passwort</label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="Passwort" class="form-control input-md" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="send">&nbsp;</label>
+            <div class="col-md-4">
+                <input id="send" name="send" type="submit" class="btn btn-primary">
+            </div>
+        </div>
+    </div>
 </form>
-</body>
-</html>

@@ -3,19 +3,19 @@
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="textinput">Vorname</label>
 		  <div class="col-md-4">
-		  	<input id="fname" name="fname" type="text" class="form-control input-md">
+		  	<input id="fname" name="fname" type="text" class="form-control input-md" required>
 		  </div>
 		</div>
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="textinput">Nachname</label>
 		  <div class="col-md-4">
-		  	<input id="lname" name="lname" type="text" class="form-control input-md">
+		  	<input id="lname" name="lname" type="text" class="form-control input-md" required>
 		  </div>
 		</div>
 		<div class="form-group">
 		  <label class="col-md-2 control-label" for="textinput">Mail</label>
 		  <div class="col-md-4">
-		  	<input id="email" name="email" type="text" class="form-control input-md">
+		  	<input id="email" name="email" type="email" class="form-control input-md" required>
 		  </div>
 		</div>
 		<div class="form-group">
