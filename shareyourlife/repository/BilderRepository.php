@@ -13,7 +13,7 @@ class BilderRepository extends Repository
      * Diese Variable wird von der Klasse Repository verwendet, um generische
      * Funktionen zur Verfügung zu stellen.
      */
-    protected $tableName = 'users';
+    protected $tableName = 'images';
 
     /**
      * Erstellt einen neuen benutzer mit den gegebenen Werten.
@@ -28,14 +28,13 @@ class BilderRepository extends Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-    public function create($firstName, $lastName, $email, $password)
+    public function Bildercreate($dateiname, $username, $tags, $pfad)
     {
-        $password = sha1($password);
 
-        $query = "INSERT INTO $this->tableName (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (dateiname, userid, tags, pfad) VALUES (?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssss', $firstName, $lastName, $email, $password);
+        $statement->bind_param('siss', $dateiname, $userid, $tags, $pfad);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
