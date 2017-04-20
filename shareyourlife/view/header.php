@@ -35,7 +35,7 @@
                         <a class="listLink" href="/user/create">Register</a></li>
 
                     </li>
-                    <li class="upload"><a href="/bilder"  id="uploadButton">Upload</a></li>
+                    <li class="upload"><a href="/bilder/upload"  id="uploadButton">Upload</a></li>
                         
 
                 </ul>
@@ -43,7 +43,7 @@
             <div id="topbar">
               <ul>
                 <li class="button"><a class="listLink" href="/">Home</a></li>
-                <li class="button"><a class="listLink" href="/bilder/anzeigen">Bildergalerie</a></li>
+                <li class="button"><a class="listLink" href="/bilder">Bildergalerie</a></li>
                 <li class="button"><a class="listLink" href="/user/create">Benutzer</a></li>
               </ul>
 
