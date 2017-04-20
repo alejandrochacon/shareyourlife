@@ -34,6 +34,9 @@ class BilderController
     
         $ziel= "../public/images/upload";
         $name = $_FILES['userfile']['name'];
+        $tempname = $_FILES['userfile']['tmp_name'];
+        $size = $_FILES['userfile']['size'];
+        $tags = $_POST['tags'];
         move_uploaded_file($_FILES['userfile']['tmp_name'],"$ziel/$name");
         header('Location: /bilder');
         //$view = new View('user_create');
