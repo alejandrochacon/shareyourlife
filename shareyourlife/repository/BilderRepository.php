@@ -28,8 +28,28 @@ class BilderRepository extends Repository
      *
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
+    public function selectuserid($username){
+        $query="Select id from users WHERE username = (?)";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i', $username);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+
+        $result = $statement->get_result();
+        $userid = $result->fetch_object();
+
+        $benutzerid = $userid->username;
+        //$username = $statement->get_result()->fetch_row();
+        return $benutzerid;
+
+    }
     public function Bildercreate($dateiname, $username, $tags, $pfad)
     {
+
+        $userid = Account::getUserid();
 
         $query = "INSERT INTO $this->tableName (dateiname, userid, tags, pfad) VALUES (?, ?, ?, ?)";
 

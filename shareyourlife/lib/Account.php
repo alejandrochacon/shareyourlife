@@ -12,5 +12,8 @@ class Account
     public static function getUsername() {
         return (!empty($_SESSION['username'])) ? $_SESSION['username'] : "";
     }
+    public static function getUserid(){
+        return(!empty($_SESSION['username'])) ? $_SESSION['username']:"";
+    }
 
 }
