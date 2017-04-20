@@ -49,11 +49,11 @@
                    <li class="loginbutton" id="logoutbutton"> <a class="listLink" href="/user/logout">Logout</a></li>
 
                         <li id="loggedname">eingeloggt als <?= Account::getUsername() ?></li>
-
+                        <li class="upload"><a href="/bilder/upload"  id="uploadButton">Upload</a></li>
                     <?php };?>
 
 
-                    <li class="upload"><a href="/bilder/upload"  id="uploadButton">Upload</a></li>
+                    
                         
 
                 </ul>

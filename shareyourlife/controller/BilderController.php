@@ -31,13 +31,15 @@ class BilderController
     public function uploaden()
     {
      //   if (!is_null($_FILES['userfile']['tmp_name']))
-    
+        session_start();
+        $username = $_SESSION['username'];
         $ziel= "../public/images/upload";
         $name = $_FILES['userfile']['name'];
-        $tempname = $_FILES['userfile']['tmp_name'];
+        $pfad = $ziel/$name;
         $size = $_FILES['userfile']['size'];
         $tags = $_POST['tags'];
-        move_uploaded_file($_FILES['userfile']['tmp_name'],"$ziel/$name");
+        Bildercreate($name, $username, $tags, $pfad);
+        move_uploaded_file($_FILES['userfile']['tmp_name'],"$pfad");
         header('Location: /bilder');
         //$view = new View('user_create');
         //$view->title = 'Benutzer erstellen';
