@@ -49,7 +49,7 @@
             <div id="topbar">
               <ul>
                 <li class="button"><a class="listLink" href="/">Home</a></li>
-                <li class="button"><a class="listLink" href="/user">Bildergalerie</a></li>
+                <li class="button"><a class="listLink" href="/bilder/anzeigen">Bildergalerie</a></li>
                 <li class="button"><a class="listLink" href="/user/create">Benutzer</a></li>
               </ul>
 

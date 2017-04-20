@@ -33,22 +33,20 @@ class BilderController
         //$view->display();
     }
 
-    public function doCreate()
+    public function anzeigen()
     {
-        if ($_POST['send']) {
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $email = $_POST['email'];
-            // $password  = $_POST['password'];
-            $password = 'no_password';
+        $bilderRepository = new BilderRepository();
 
-            $userRepository = new UserRepository();
-            $userRepository->create($firstName, $lastName, $email, $password);
-        }
+        $view = new View('picture_gallery');
+        $view->title = 'Bildergalerie';
+        $view->heading = 'Bildergalerie';
+        $view->users = $bilderRepository->readAll();
+        $view->display();
 
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        
+        
     }
+
 
     public function delete()
     {
