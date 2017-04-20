@@ -67,37 +67,45 @@ class UserController
     }
     public function authLog()
     {
-        $email=$_POST['email'];
-        $password=$_POST['password'];
+        if(!empty($_POST['email']) && !empty($_POST['password'])){
+
+            $email=$_POST['email'];
+            $password = sha1($_POST['password']);
 
 
-
-
-
-
-
-        $_POST['password']=sha1($_POST['password']);
-        $query="Select * from users WHERE email=$email";
-        $query2="select * from users where password = $password";
-        if($query&&$query2){
             $userRepository = new UserRepository();
-            $userRepository->selectusername($email, $password);
-            $view = new View('user_home');
-            $view->benutzername = $userRepository->selectusername($email, $password);
-            $username = $userRepository->selectusername($email, $password);
 
-            session_start();
-            $_SESSION['username']=$username;
-            header('location: /');
+            $user = $userRepository->getUserByEmail($email);
+
+            if (!empty($user)) {
+
+                if ($user->password == $password) {
+                    $_SESSION['user'] = $user;
+                    $this->myaccount();
 
 
+                } else {
+                    header('location: /');
+                }
+            } else {
+                header('location: /');
+            }
         }
         else
-            {
-                echo "Die Einloggdaten waren falsch";
-            }
+        {
+            header('location: /');
+        }
 
     }
+
+    public function myaccount() {
+        $view = new View('user_index');
+        $view->title = "Mein Konto";
+        $view->heading = "Mein Konto";
+        $view->benutzername = Account::getUsername();
+        $view->display();
+    }
+
     public function logout(){
         session_start();
         session_destroy();

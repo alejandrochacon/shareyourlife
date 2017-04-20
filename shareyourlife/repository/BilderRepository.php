@@ -29,10 +29,10 @@ class BilderRepository extends Repository
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
     public function selectuserid($username){
-        $query="Select id from users WHERE username = (?)";
 
+        $query="Select userid from $this->tableName WHERE username = (?) inner join users on images.userid = users.id";
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('i', $username);
+        $statement->bind_param('s', $username);
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
@@ -41,12 +41,12 @@ class BilderRepository extends Repository
         $result = $statement->get_result();
         $userid = $result->fetch_object();
 
-        $benutzerid = $userid->username;
+        $benutzerid = $userid->id;
         //$username = $statement->get_result()->fetch_row();
         return $benutzerid;
 
     }
-    public function Bildercreate($dateiname, $username, $tags, $pfad)
+    public function Bildercreate($dateiname, $userid, $tags, $pfad)
     {
 
         $userid = Account::getUserid();

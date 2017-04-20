@@ -31,26 +31,17 @@
                     <li id="search" >
 
                     <input id="suchleiste" type="text" placeholder="Search" onchange=""/></li>
-                    <?php
-                    session_start();
-
-                    if(!isset($_SESSION['username'])){
-
-                    ?>
+                    <?php if (!Account::isLoggedIn()) : ?>
                     <li class="loginbutton"> <a class="listLink" href="/user/login">Login</a>
                         <a class="listLink" href="/user/create">Register</a></li>
-                        <?php
-                    }
-                    else{
-                        $username = $_SESSION['username'];
-                        ?>
+                    <?php else : ?>
 
 
                    <li class="loginbutton" id="logoutbutton"> <a class="listLink" href="/user/logout">Logout</a></li>
 
                         <li id="loggedname">eingeloggt als <?= Account::getUsername() ?></li>
                         <li class="upload"><a href="/bilder/upload"  id="uploadButton">Upload</a></li>
-                    <?php };?>
+                    <?php endif ?>
 
 
                     

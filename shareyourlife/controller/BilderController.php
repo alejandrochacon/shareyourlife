@@ -31,7 +31,6 @@ class BilderController
     public function uploaden()
     {
      //   if (!is_null($_FILES['userfile']['tmp_name']))
-        session_start();
         $username = $_SESSION['username'];
         $ziel= "../public/images/upload";
         $name = $_FILES['userfile']['name'];
@@ -41,7 +40,8 @@ class BilderController
 
 
         $bilderRepository = new BilderRepository();
-        $bilderRepository->Bildercreate($name, selectuserid($username), $tags, $pfad);
+
+        $bilderRepository->Bildercreate($name, Account::getUserid(), $tags, $pfad);
         move_uploaded_file($_FILES['userfile']['tmp_name'],"$pfad");
         header('Location: /bilder');
         //$view = new View('user_create');

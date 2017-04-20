@@ -8,6 +8,7 @@
  * Wie in der .htaccess Datei beschrieben, werden alle Anfragen, welche nicht
  * auf eine bestehende Datei zeigen hierhin umgeleitet.
  */
+session_start();
 
 require_once '../lib/Dispatcher.php';
 require_once '../lib/formbuilder/FormBuilder.php';
