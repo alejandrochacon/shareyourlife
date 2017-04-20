@@ -11,41 +11,37 @@ class BilderController
     {
         $bilderRepository = new BilderRepository();
 
+        $view = new View('picture_gallery');
+        $view->title = 'Bildergallerie';
+        $view->heading = 'Bildergallerie';
+        $view->users = $bilderRepository->readAll();
+        $view->display();
+    }
+    public function upload()
+    {
+        $bilderRepository = new BilderRepository();
+
         $view = new View('picture_index');
-        $view->title = 'Bilder';
-        $view->heading = 'Bilder';
+        $view->title = 'Bild hochladen';
+        $view->heading = 'Bild hochladen';
         $view->users = $bilderRepository->readAll();
         $view->display();
     }
 
-    public function upload()
+    public function uploaden()
     {
      //   if (!is_null($_FILES['userfile']['tmp_name']))
     
         $ziel= "../public/images/upload";
         $name = $_FILES['userfile']['name'];
         move_uploaded_file($_FILES['userfile']['tmp_name'],"$ziel/$name");
-        echo "<input type='image' src='/images/upload/$name'/>";
-    
+        header('Location: /bilder');
         //$view = new View('user_create');
         //$view->title = 'Benutzer erstellen';
         //$view->heading = 'Benutzer erstellen';
         //$view->display();
     }
 
-    public function anzeigen()
-    {
-        $bilderRepository = new BilderRepository();
-
-        $view = new View('picture_gallery');
-        $view->title = 'Bildergalerie';
-        $view->heading = 'Bildergalerie';
-        $view->users = $bilderRepository->readAll();
-        $view->display();
-
-        
-        
-    }
 
 
     public function delete()
