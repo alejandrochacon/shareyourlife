@@ -35,10 +35,11 @@ class BilderController
         $username = $_SESSION['username'];
         $ziel= "../public/images/upload";
         $name = $_FILES['userfile']['name'];
-        $pfad = $ziel/$name;
+        $pfad = "$ziel/$name";
         $size = $_FILES['userfile']['size'];
         $tags = $_POST['tags'];
-        Bildercreate($name, $username, $tags, $pfad);
+        $bilderRepository = new BilderRepository();
+        $bilderRepository->Bildercreate($name, $username, $tags, $pfad);
         move_uploaded_file($_FILES['userfile']['tmp_name'],"$pfad");
         header('Location: /bilder');
         //$view = new View('user_create');
