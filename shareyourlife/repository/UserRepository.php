@@ -43,13 +43,13 @@ class UserRepository extends Repository
 
         return $statement->insert_id;
     }
-    public function login($email,$password)
-    {
-        if($_POST = $email){
-            session_start();
+  //  public function login($email,$password)
+    //{
+      //  if($_POST = $email){
+        //    session_start();
 
-        }
-    }
+        //}
+    //}
 
 
 }
