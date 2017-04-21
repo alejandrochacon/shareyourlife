@@ -16,7 +16,7 @@ CREATE TABLE images(
   dateiname varchar(64) not null,
   userid 	int,
   tags 		longtext not null,
-  tmpsave	varchar(64) not null,
+  pfad	varchar(64) not null,
   PRIMARY KEY (id),
   FOREIGN Key (userid) REFERENCES Users(id)
 );
