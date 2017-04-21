@@ -17,8 +17,8 @@
             $count+=1;
             ?>
             <li class="bilder">
-                <a href="<?= $bild->pfad ?>">
-                    <img src="<?= $bild->pfad ?>" width="140" alt="Vorschau" />
+                <a href="../<?= $bild->pfad ?>">
+                    <img src="../<?= $bild->pfad ?>" width="140" alt="Vorschau" />
                 </a>
 
             </li>

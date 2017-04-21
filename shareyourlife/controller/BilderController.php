@@ -76,6 +76,7 @@ class BilderController
         $tags=$_POST['searchbar'];
         $bilderRepository = new BilderRepository();
         $bilder = $bilderRepository->suche($tags);
+
         $view = new View('picture_suche');
         $view->title = 'Suchergebnis';
         $view->heading = 'Suchergebnis';
