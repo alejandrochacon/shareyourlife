@@ -18,5 +18,5 @@ CREATE TABLE images(
   tags 		longtext not null,
   pfad	varchar(64) not null,
   PRIMARY KEY (id),
-  FOREIGN Key (userid) REFERENCES Users(id)
+  FOREIGN Key (userid) REFERENCES Users(id) on Delete CASCADE
 );

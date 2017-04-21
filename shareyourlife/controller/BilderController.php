@@ -34,7 +34,7 @@ class BilderController
     {
      //   if (!is_null($_FILES['userfile']['tmp_name']))
 
-        $ziel= "/images/upload";
+        $ziel= "images/upload";
         $name = $_FILES['userfile']['name'];
         $pfad = "$ziel/$name";
         $size = $_FILES['userfile']['size'];
@@ -44,7 +44,7 @@ class BilderController
         $bilderRepository = new BilderRepository();
 
         $bilderRepository->Bildercreate($name, Account::getUserid(), $tags, $pfad);
-        move_uploaded_file($_FILES['userfile']['tmp_name'],"$pfad");
+        move_uploaded_file($_FILES['userfile']['tmp_name'],$pfad);
         header('Location: /bilder');
         //$view = new View('user_create');
         //$view->title = 'Benutzer erstellen';
