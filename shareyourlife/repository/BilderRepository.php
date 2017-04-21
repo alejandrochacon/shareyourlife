@@ -121,7 +121,7 @@ class BilderRepository extends Repository
     {
         $tags = $_POST['searchbar'];
         $tags = "%" . $tags . "%";
-        $query ="select pfad from images join users on images.userid = users.id where tags LIKE ? or username LIKE ?";
+        $query ="select pfad from images join Users on images.userid = Users.id where tags LIKE ? or username LIKE ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
 
         $statement->bind_param('ss', $tags, $tags);
