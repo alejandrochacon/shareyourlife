@@ -13,9 +13,12 @@
                 <p>Hier sind alle deine geuploaded Bilder</p>
 
                 <div class ="bgbild">
-                    <?php foreach($images as $img) :
-                        $count=0;
-                        if ($count==7) {
+                    <?php 
+                    $count=0;
+                     foreach($images as $img) :
+
+                        
+                        if ($count==5) {
                             $count=0;
                             echo "</div>";
                             echo '<div class="bgbild"/>';

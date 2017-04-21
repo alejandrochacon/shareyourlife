@@ -1,8 +1,8 @@
 <div class="bgbild" >
-    <ul>
-        <?php foreach($images as $img) :
-            $count=0;
-            if ($count==7) {
+   <?php $count=0;
+         foreach($images as $img) :
+            
+            if ($count==5) {
                 $count=0;
                 echo "</div>";
                 echo '<div class="bgbild" >';
@@ -17,6 +17,6 @@
                 <ul> <li>Tags</li></ul>   <?= $img->tags ?>
             </figcaption>
         </li>
-        <?php endforeach ?>
-    </ul>
+        <?php 
+        endforeach ?>
 </div>

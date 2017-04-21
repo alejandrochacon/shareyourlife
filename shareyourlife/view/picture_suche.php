@@ -5,11 +5,14 @@
        <?php if($images->num_rows < 1){
        ?><p>Keine Suchergebnisse</p>
         <?php
+
        }
+
        else{
-         while($bild = $images->fetch_object()) {
             $count=0;
-            if ($count==7) {
+         while($bild = $images->fetch_object()) {
+
+            if ($count==5) {
                 $count=0;
                 echo "</div>";
                 echo '<div class="bgbild" >';
