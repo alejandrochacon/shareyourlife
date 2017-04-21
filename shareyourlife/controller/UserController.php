@@ -47,8 +47,9 @@ class UserController
     public function delete()
     {
         $userRepository = new UserRepository();
-        $userRepository->deleteById($_GET['id']);
 
+        $userRepository->deleteById($_SESSION['user']->id);
+        session_destroy();
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /');
     }
@@ -103,6 +104,8 @@ class UserController
         $view->title = "Mein Konto";
         $view->heading = "Mein Konto";
         $view->benutzername = Account::getUsername();
+        $view->userid = Account::getUserid();
+        $view->logged=Account::isLoggedIn();
         $view->display();
     }
 

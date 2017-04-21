@@ -53,7 +53,7 @@
               <ul>
                 <li class="button"><a class="listLink" href="/">Home</a></li>
                 <li class="button"><a class="listLink" href="/bilder">Bildergalerie</a></li>
-                <li class="button"><a class="listLink" href="/user/create">Benutzer</a></li>
+                <li class="button"><a class="listLink" href="/user/myaccount">Benutzer</a></li>
               </ul>
 
         </div><!--/.nav-collapse -->

@@ -1,19 +1,14 @@
 <article class="hreview open special">
-	<?php if (empty($users)): ?>
+	<?php if (empty($_SESSION['user'])): ?>
 		<div class="dhd">
-			<h2 class="item title">Hoopla! Keine User gefunden.</h2>
+			<h2 class="item title">Hoopla! Sie sind nicht angemeldet</h2>
 		</div>
 	<?php else: ?>
-		<?php foreach ($users as $user): ?>
+
 			<div class="panel panel-default">
-				<div class="panel-heading"><?= $user->firstName;?> <?= $user->lastName;?></div>
 				<div class="panel-body">
-					<p class="description">In der Datenbank existiert ein User mit dem Namen <?= $user->firstName;?> <?= $user->lastName;?>. Dieser hat die EMail-Adresse: <a href="mailto:<?= $user->email;?>"><?= $user->email;?></a></p>
-					<p>
-						<a title="Löschen" href="/user/delete?id=<?= $user->id ?>">Löschen</a>
-					</p>
-				</div>
+				<p>Hier hast du die übersicht über dein Konto</p>
+                <a href="/user/delete">Konto Löschen</a>
 			</div>
-		<?php endforeach ?>
 	<?php endif ?>
 </article>

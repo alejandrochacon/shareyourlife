@@ -54,8 +54,14 @@ class BilderController
 
     public function delete()
     {
-        $userRepository = new UserRepository();
-        $userRepository->deleteById($_GET['id']);
+        $bildid = $_GET['id'];
+
+        $bilderRepository = new bilderRepository();
+        $bild = $bilderRepository->readById($bildid);
+
+        $bilderRepository->deleteById($bildid);
+
+        unlink($bild->dateiname);
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user');

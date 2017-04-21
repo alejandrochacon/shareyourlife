@@ -62,4 +62,16 @@ class BilderRepository extends Repository
 
         return $statement->insert_id;
     }
-}
+
+    public function selectbilderid($dateiname){
+
+
+        $query ="select id from images where dateiname = (?)";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $dateiname);
+        if ($statement->execute()) {
+            throw new Exception($statement->error);
+        }
+        return $statement->id;
+        }
+    }
