@@ -1,11 +1,11 @@
-<div class="bgbild" background="/images/bg.jpeg" >
+<div class="bgbild" >
     <ul>
         <?php foreach($images as $img) :
             $count=0;
             if ($count==7) {
                 $count=0;
                 echo "</div>";
-                echo '<div class="bgbild" background="/images/bg.jpeg"/>';
+                echo '<div class="bgbild" >';
             }
             $count+=1;
             ?>

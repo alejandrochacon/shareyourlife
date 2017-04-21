@@ -131,6 +131,26 @@ class UserController
         session_destroy();
         header('location: /');
     }
+    public function edit()
+    {
+        if (isset($_POST['edit_username'])) {
+            $Nusername = $_POST['username'];
+            $UserRepository = new UserRepository();
+            $userid = Account::getUserid();
+
+            $UserRepository->editUsername($Nusername, $userid);
+            $_SESSION['user']->username = $Nusername;
+        }
+
+        $view = new View('user_edit');
+        $view->title = "Benutzer bearbeiten";
+        $view->heading = "Benutzer bearbeiten";
+        $view->display();
+    }
+
+
+
+
 
 
 }

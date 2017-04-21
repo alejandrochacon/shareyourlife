@@ -34,7 +34,7 @@ class BilderController
     {
      //   if (!is_null($_FILES['userfile']['tmp_name']))
 
-        $ziel= "../public/images/upload";
+        $ziel= "/images/upload";
         $name = $_FILES['userfile']['name'];
         $pfad = "$ziel/$name";
         $size = $_FILES['userfile']['size'];
@@ -59,7 +59,7 @@ class BilderController
         if (isset($_GET['id'])) {
             $bildid = $_GET['id'];
 
-            $bilderRepository = new bilderRepository();
+            $bilderRepository = new BilderRepository();
             $bild = $bilderRepository->readById($bildid);
 
             if ($bild->userid == Account::getUserid()) {
@@ -72,4 +72,14 @@ class BilderController
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user/myaccount');
     }
+    public function suche(){
+        $tags=$_POST['searchbar'];
+        $bilderRepository = new BilderRepository();
+        $bilder = $bilderRepository->suche($tags);
+        $view = new View('picture_suche');
+        $view->title = 'Suchergebnis';
+        $view->heading = 'Suchergebnis';
+        $view->images = $bilder;
+        $view->display();
+            }
 }

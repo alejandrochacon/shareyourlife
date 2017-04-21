@@ -117,4 +117,23 @@ class BilderRepository extends Repository
         }
         return $statement->dateiname;
     }
+    public function suche($tags)
+    {
+        $tags = $_POST['searchbar'];
+        $tags = "%" . $tags . "%";
+        $query ="select pfad from images join users on images.userid = users.id where tags LIKE ? or username LIKE ?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+
+        $statement->bind_param('ss', $tags, $tags);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+        $result = $statement->get_result();
+        if(!empty($result)) {
+            return $result;
+        }
+        else {
+            return 1;
+        }
+        }
     }

@@ -70,7 +70,25 @@ class UserRepository extends Repository
         return $benutzername;
 
     }
+    public function selectuserid($email) {
 
+        $query="Select id from users WHERE email = (?)";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $email);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+
+
+        $result = $statement->get_result();
+        $username = $result->fetch_object();
+
+        $userid = $username->username;
+        //$username = $statement->get_result()->fetch_row();
+        return $userid;
+
+    }
     public function getUserByEmail($email) {
 
         $query = "SELECT * FROM $this->tableName WHERE email=?";
@@ -97,6 +115,17 @@ class UserRepository extends Repository
 
         // Den gefundenen Datensatz zurückgeben
         return $row;
+    }
+
+    public function editUsername($Nusername,$userid)
+    {
+        $query ="UPDATE $this->tableName SET username=? where id=?";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('si', $Nusername, $userid);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
     }
 
 

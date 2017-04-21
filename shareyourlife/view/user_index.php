@@ -8,6 +8,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 				<p>Hier hast du die übersicht über dein Konto</p>
+                <a href="/user/edit">Username ändern</a>
                 <a href="/user/delete">Konto Löschen</a>
                 <p>Hier sind alle deine geuploaded Bilder</p>
 
@@ -17,7 +18,7 @@
                         if ($count==7) {
                             $count=0;
                             echo "</div>";
-                            echo '<div class="bgbild" background="/images/bg.jpeg"/>';
+                            echo '<div class="bgbild"/>';
                         }
                         $count+=1;
                         ?>

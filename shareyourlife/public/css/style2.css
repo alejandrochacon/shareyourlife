@@ -1,11 +1,11 @@
 .bilder{
 	float: left;
-
+	height: 125px;
 	width: 20%;
 
 }
 .bgbild{
+	height:125px;
 	width: 100%;
-	height: 125px;
 	margin-bottom: 20px;
 }
