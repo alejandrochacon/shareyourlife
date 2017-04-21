@@ -46,10 +46,10 @@ class BilderRepository extends Repository
         return $benutzerid;
 
     }
-    public function Bildercreate($dateiname, $userid, $tags, $pfad)
+    public function Bildercreate($dateiname,$userid, $tags, $pfad)
     {
 
-        $userid = Account::getUserid();
+
 
         $query = "INSERT INTO $this->tableName (dateiname, userid, tags, pfad) VALUES (?, ?, ?, ?)";
 
@@ -63,15 +63,58 @@ class BilderRepository extends Repository
         return $statement->insert_id;
     }
 
+    public function readAllByUserId($userid) {
+
+        // Query erstellen
+        $query = "SELECT * FROM {$this->tableName} WHERE userid=?";
+
+        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
+        // und die Parameter "binden"
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('i', $userid);
+
+        // Das Statement absetzen
+        $statement->execute();
+
+        // Resultat der Abfrage holen
+        $result = $statement->get_result();
+        if (!$result) {
+            throw new Exception($statement->error);
+        }
+
+        $rows = [];
+        // Ersten Datensatz aus dem Reultat holen
+        while($row = $result->fetch_object()) {
+            $rows[] = $row;
+        }
+
+        // Datenbankressourcen wieder freigeben
+        $result->close();
+
+        // Den gefundenen Datensatz zurückgeben
+        return $rows;
+
+    }
+
     public function selectbilderid($dateiname){
 
 
         $query ="select id from images where dateiname = (?)";
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('s', $dateiname);
-        if ($statement->execute()) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
         return $statement->id;
         }
+    public function selectbildername(){
+        $userid = account::getUserid();
+        $query ="select dateiname from images where userid = (?)";
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('s', $userid);
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+        return $statement->dateiname;
+    }
     }
