@@ -29,8 +29,9 @@
                 <ul id="registerbutton">
                     <li class="suche">
                     <li id="search" >
-
+                    <form method="post" action="/bilder/suche">
                     <input id="suchleiste" type="text" placeholder="Search" onchange=""/></li>
+                    </form>
                     <?php if (!Account::isLoggedIn()) : ?>
                     <li class="loginbutton"> <a class="listLink" href="/user/login">Login</a>
                         <a class="listLink" href="/user/create">Register</a></li>
