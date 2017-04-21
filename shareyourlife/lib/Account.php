@@ -19,8 +19,6 @@ class Account
     public static function isLoggedIn() {
         return (!empty($_SESSION['user'])) ? true : false;
     }
-    public static function getBilderId() {
 
-    }
 
 }

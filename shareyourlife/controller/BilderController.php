@@ -11,10 +11,12 @@ class BilderController
     {
         $bilderRepository = new BilderRepository();
 
+        $images = $bilderRepository->readAllByUserId(Account::getUserid());
+
         $view = new View('picture_gallery');
         $view->title = 'Bildergallerie';
         $view->heading = 'Bildergallerie';
-        $view->users = $bilderRepository->readAll();
+        $view->images = $images;
         $view->display();
     }
     public function upload()
@@ -31,12 +33,12 @@ class BilderController
     public function uploaden()
     {
      //   if (!is_null($_FILES['userfile']['tmp_name']))
-        $username = $_SESSION['username'];
+
         $ziel= "../public/images/upload";
         $name = $_FILES['userfile']['name'];
         $pfad = "$ziel/$name";
         $size = $_FILES['userfile']['size'];
-        $tags = $_POST['tags'];
+        $tags = htmlspecialchars($_POST['tags']);
 
 
         $bilderRepository = new BilderRepository();
@@ -54,16 +56,20 @@ class BilderController
 
     public function delete()
     {
-        $bildid = $_GET['id'];
+        if (isset($_GET['id'])) {
+            $bildid = $_GET['id'];
 
-        $bilderRepository = new bilderRepository();
-        $bild = $bilderRepository->readById($bildid);
+            $bilderRepository = new bilderRepository();
+            $bild = $bilderRepository->readById($bildid);
 
-        $bilderRepository->deleteById($bildid);
+            if ($bild->userid == Account::getUserid()) {
 
-        unlink($bild->dateiname);
+                $bilderRepository->deleteById($bild->id);
 
+                unlink('images/upload/' . $bild->dateiname);
+            }
+        }
         // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        header('Location: /user/myaccount');
     }
 }

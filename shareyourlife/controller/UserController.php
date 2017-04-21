@@ -1,6 +1,7 @@
 <?php
 
 require_once '../repository/UserRepository.php';
+require_once '../repository/BilderRepository.php';
 
 /**
  * Siehe Dokumentation im DefaultController.
@@ -10,11 +11,15 @@ class UserController
     public function index()
     {
         $userRepository = new UserRepository();
+        $bilderRepository = new BilderRepository();
+
+        $images = $bilderRepository->readAllByUserId(Account::getUserid());
 
         $view = new View('user_index');
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
-        $view->users = $userRepository->readAll();
+        $view->users = $userRepository->readById(Account::getUserid());
+        $view->images = $images;
         $view->display();
     }
 
@@ -29,11 +34,11 @@ class UserController
     public function doCreate()
     {
         if ($_POST['send']) {
-            $userName = $_POST['userName'];
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $userName=htmlspecialchars($_POST['userName' ]);
+            $firstName = htmlspecialchars($_POST['firstName']);
+            $lastName = htmlspecialchars($_POST['lastName']);
+            $email = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
 
 
             $userRepository = new UserRepository();
@@ -41,7 +46,7 @@ class UserController
         }
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
+        header('Location: /user/login');
     }
 
     public function delete()
@@ -68,7 +73,8 @@ class UserController
     }
     public function authLog()
     {
-        if(!empty($_POST['email']) && !empty($_POST['password'])){
+        if(!empty(htmlspecialchars($_POST['email'])) && !empty ($_POST['password']))
+        {
 
             $email=$_POST['email'];
             $password = sha1($_POST['password']);
@@ -105,12 +111,18 @@ class UserController
     }
 
     public function myaccount() {
+
+        $bilderRepository = new BilderRepository();
+
+        $images = $bilderRepository->readAllByUserId(Account::getUserid());
+
         $view = new View('user_index');
         $view->title = "Mein Konto";
         $view->heading = "Mein Konto";
         $view->benutzername = Account::getUsername();
         $view->userid = Account::getUserid();
         $view->logged=Account::isLoggedIn();
+        $view->images = $images;
         $view->display();
     }
 
