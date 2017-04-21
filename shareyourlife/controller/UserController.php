@@ -134,7 +134,7 @@ class UserController
     public function edit()
     {
         if (isset($_POST['edit_username'])) {
-            $Nusername = $_POST['username'];
+            $Nusername = htmlspecialchars($_POST['username']);
             $UserRepository = new UserRepository();
             $userid = Account::getUserid();
 
