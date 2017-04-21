@@ -81,20 +81,25 @@ class UserController
             if (!empty($user)) {
 
                 if ($user->password == $password) {
+
+                    $_SESSION['falschpw'] = false;
                     $_SESSION['user'] = $user;
                     $this->myaccount();
 
 
                 } else {
-                    header('location: /');
+                    $_SESSION['falschpw'] = true;
+                    header('location: /user/login');
                 }
             } else {
-                header('location: /');
+                $_SESSION['falschpw'] = true;
+                header('location: /user/login');
             }
         }
         else
         {
-            header('location: /');
+            $_SESSION['falschpw'] = true;
+            header('location: /user/login');
         }
 
     }

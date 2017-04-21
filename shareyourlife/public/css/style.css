@@ -23,7 +23,10 @@ body {
 p{
   opacity: 1.0;
 }
+.falsch{
+  background-color: #DD9999;
 
+}
 #navbar{
   margin: 0 auto;
 

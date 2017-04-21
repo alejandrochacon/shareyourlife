@@ -1,3 +1,9 @@
+<?php if (!empty($_SESSION['falschpw']) AND $_SESSION['falschpw']): ?>
+	<div class="falsch">
+	Falsche Logindaten.
+	</div>
+	<?php else: ?>
+	<?php endif ?>
 <form class="form-horizontal" action="/user/authLog" method="post">
   <input type="email" placeholder="Beispiel@mail.com" required
   name="email"> <br>
@@ -7,3 +13,6 @@
     </div>
 
 </form>
+<?php 
+$_SESSION['falschpw']=false;
+?>
