@@ -136,4 +136,7 @@ class BilderRepository extends Repository
             return 1;
         }
         }
+public function gallerie(){
+$query ="select * from bilder join user.id on userid"
+}
     }
